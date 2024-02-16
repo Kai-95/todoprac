@@ -19,7 +19,7 @@ async fn main(){
         
     let app = Router::new()
     .route("/",get(root))
-    .route("/users",post(create_user));
+    .route("/users", post(create_user));
 
     let addr =SocketAddr::from(([0 , 0 , 0 , 0 ],3000));
     tracing::debug!("liseting on {}",addr);
@@ -40,7 +40,7 @@ async fn root() -> &'static str{
 //予想としてSirializeするものがなかったためえらー？
 async fn create_user(
     //ここでdeserialize
-    Json(payload): Json<CreateUser>
+    Json(payloa５d): Json<CreateUser>
 ) -> impl IntoResponse {
     let user = User{
         id: 1337,
