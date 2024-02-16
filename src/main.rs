@@ -35,14 +35,18 @@ async fn root() -> &'static str{
     "Hello world"
 }
 
+//下記の部分はStructのUserのserializeと関連
+//[derive(Deserialize)]の場合動かない
+//予想としてSirializeするものがなかったためえらー？
 async fn create_user(
     //ここでdeserialize
-    Json(payload): Json<CreateUser>,
+    Json(payload): Json<CreateUser>
 ) -> impl IntoResponse {
     let user = User{
         id: 1337,
         username: payload.username,
     };
+    //ここでSirialize
     (StatusCode::CREATED, Json(user))
 }
 
@@ -50,7 +54,7 @@ async fn create_user(
 struct CreateUser{
     username: String,
 }
-#[derive(Deserialize)]
+#[derive(Serialize)]
 struct User{
     id: u64,
     username: String,
