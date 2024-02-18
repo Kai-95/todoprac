@@ -12,6 +12,37 @@ use std::{
 use std::net::SocketAddr;
 use thiserror::Error;
 
+type TodoDatas = HashMap<i32, Todo>;
+
+pub struct TodoRepositoryForMemory{
+    store: Arc<RwLock<TodoDatas>>,
+}
+
+fn create(&self, payload: CreateTodo)->{
+    todo!();
+}
+
+fn find(&self, id:i32)-> Option<Todo>{
+    todo!();
+}
+fn all(&self)-> Vec<Todo>{
+    todo!();
+}
+
+fn update(&self, id:i32,payload: UpdateTodo)-> anyhow::Result<Todo>{
+    todo!();
+}
+
+fn delete(&self ,id:i32)-> anyhow::Result<()>{
+    todo!();
+
+}
+
+
+
+
+
+
 #[derive(Debug,Error)]
 enum RepositoryError {
     #[error("not foun,id is{0}")]
